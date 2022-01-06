@@ -1,0 +1,14 @@
+CC=gcc
+CFLAGS=-Wall -std=c99
+
+fleschIndex: fleschIndex.o main.o
+	$(CC) $(CFLAGS) fleschIndex.o main.o -o fleschIndex -lm
+
+fleschIndex.o : fleschIndex.c fleschIndex.h
+	$(CC) $(CFLAGS) -c fleschIndex.c
+
+main.o: main.c fleschIndex.h
+	$(CC) $(CFLAGS) -c main.c
+
+clean :
+	rm *.o fleschIndex
